@@ -12,10 +12,5 @@ call plug#end()
 
 ## Commands
 
-### Rename
-
-Renames current file and the buffer
-
-```vim
-:Rename newName
-```
+  - `Rename <new-name>`: Renames current file / buffer
+  - `Del`: Deletes current file / buffer
