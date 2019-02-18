@@ -31,6 +31,31 @@ function! s:Rename(newFileName) abort
   execute "e " . newFile
 endfunction
 
+" Copy: copies current file/buffer to another file
+command! -nargs=* Copy call s:Copy(<f-args>)
+
+function! s:Copy(newFileName) abort
+  let currentFile = resolve(expand('%:p'))
+  let currentDir = resolve(expand('%:p:h'))
+  let newFile = currentDir . "/" . a:newFileName
+
+  if !isdirectory(currentDir)
+    echo "current dir invalid " . currentDir
+    return
+  endif
+
+  if !filereadable(currentFile)
+    echo "current file unreadable " . currentFile
+    return
+  endif
+
+  execute "!cp " . currentFile . " " . newFile
+
+  bd!
+
+  execute "e " . newFile
+endfunction
+
 " Del: deletes current file/buffer
 command! -nargs=? Del call s:Del()
 
