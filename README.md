@@ -16,3 +16,5 @@ call plug#end()
   - `Copy <newFile>`: Copies current file / buffer to newFile
   - `Move <newDir>`: Copies current file / buffer to newDir
   - `Del`: Deletes current file / buffer
+
+The `Rename`, `Copy` and `Move` commands consider the current vim dir as base directory.
