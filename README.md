@@ -12,9 +12,8 @@ call plug#end()
 
 ## Commands
 
-  - `Rename <newName>`: Renames current file / buffer to newName
-  - `Copy <newFile>`: Copies current file / buffer to newFile
-  - `Move <newDir>`: Copies current file / buffer to newDir
-  - `Del`: Deletes current file / buffer
-
-The `Rename`, `Copy` and `Move` commands consider the current vim dir as base directory.
+  - `Mkdirs <varargs of new dirs>`: Creates multiple directories (directories must be separated by whitespace).
+  - `Rename <newName>`: Renames current file / buffer to newName.
+  - `Copy <newFile>`: Copies current file / buffer to newFile.
+  - `Move <newDir>`: Copies current file / buffer to newDir.
+  - `Del`: Deletes current file / buffer.

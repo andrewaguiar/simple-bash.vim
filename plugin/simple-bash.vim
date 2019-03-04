@@ -96,3 +96,12 @@ function! s:Del() abort
 
   bd!
 endfunction
+
+" Mkdirs: creates mutiples dirs
+command! -nargs=+ Mkdirs call s:Mkdirs(<f-args>)
+
+function! s:Mkdirs(...) abort
+  for dir in a:000
+    execute "!mkdir -p " . dir
+  endfor
+endfunction
