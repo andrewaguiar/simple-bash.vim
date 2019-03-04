@@ -6,6 +6,30 @@ augroup Mkdir
     \ endif
 augroup END
 
+" Move: moves current file a new directory
+command! -nargs=* Move call s:Move(<f-args>)
+
+function! s:Move(newDir) abort
+  let currentFile = resolve(expand('%:p'))
+  let currentDir = resolve(expand('%:p:h'))
+  let newFile = a:newDir . "/" . currentFile
+
+  if !filereadable(currentFile)
+    echo "current file unreadable " . currentFile
+    return
+  endif
+
+  if !isdirectory(a:newDir)
+    execute "!mkdir -p " . a:newDir
+  endif
+
+  execute "!mv " . currentFile . " " . newFile
+
+  bd!
+
+  execute "e " . newFile
+endfunction
+
 " Rename: renames current file/buffer
 command! -nargs=* Rename call s:Rename(<f-args>)
 

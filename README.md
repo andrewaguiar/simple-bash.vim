@@ -14,4 +14,5 @@ call plug#end()
 
   - `Rename <newName>`: Renames current file / buffer to newName
   - `Copy <newFile>`: Copies current file / buffer to newFile
+  - `Move <newDir>`: Copies current file / buffer to newDir
   - `Del`: Deletes current file / buffer
