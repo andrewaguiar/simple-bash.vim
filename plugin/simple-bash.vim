@@ -11,8 +11,9 @@ command! -nargs=* Move call s:Move(<f-args>)
 
 function! s:Move(newDir) abort
   let currentFile = resolve(expand('%:p'))
+  let currentFileName = resolve(expand('%:t'))
   let currentDir = resolve(expand('%:p:h'))
-  let newFile = a:newDir . "/" . currentFile
+  let newFile = a:newDir . "/" . currentFileName
 
   if !filereadable(currentFile)
     echo "current file unreadable " . currentFile
@@ -95,5 +96,3 @@ function! s:Del() abort
 
   bd!
 endfunction
-
-
