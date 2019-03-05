@@ -145,9 +145,9 @@ function! s:Gst() abort
   endfor
 
   echo " "
-  echo " "
+
   echohl HiGstGreen
-  echon "M"
+  echo "M"
   echohl None
   echon "odified, "
   echohl HiGstBlue
