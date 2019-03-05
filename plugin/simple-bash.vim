@@ -182,12 +182,5 @@ endfunction
 command! -nargs=? Gcb call s:Gcb(<f-args>)
 
 function! s:Gcb(branch) abort
-  let l:out = system("git checkout -b " . a:branch)
-
-  echo l:out
-  echo " "
-  echon "New branch created "
-  echohl HiGstGreen
-  echon a:branch
-  echohl None
+  echo system("git checkout -b " . a:branch)
 endfunction
