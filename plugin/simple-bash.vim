@@ -148,16 +148,17 @@ function! s:Gst() abort
   echohl HiGstGreen
   echon "M"
   echohl None
-  echon ": Modified, "
+  echon "odified, "
   echohl HiGstBlue
   echon "A"
   echohl None
-  echon ": Added, "
+  echon "dded, "
   echohl HiGstRed
   echon "D"
   echohl None
-  echon ": Deleted, "
+  echon "eleted, "
   echohl HiGstYellow
+  echon "??"
   echohl None
-  echon ": Untracked"
+  echon "-Untracked"
 endfunction
