@@ -245,6 +245,8 @@ function! s:Gr(files) abort
   echo "Gr: git reset " . a:files
   echo " "
   echo system("git reset " . a:files)
+  echo " "
+  call Gst()
 endfunction
 
 " Gra: git reset .
@@ -254,4 +256,6 @@ function! s:Gra() abort
   echo "Gra: git reset ."
   echo " "
   echo system("git reset .")
+  echo " "
+  call Gst()
 endfunction
