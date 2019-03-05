@@ -168,7 +168,7 @@ endfunction
 command! -nargs=? Gco call s:Gco(<f-args>)
 
 function! s:Gco(branch) abort
-  execute "!git checkout " . a:branch
+  let l:out = system("git checkout " . a:branch)
 
   echon "Changed to branch "
   echohl HiGstGreen
@@ -180,7 +180,7 @@ endfunction
 command! -nargs=? Gcb call s:Gcb(<f-args>)
 
 function! s:Gcb(branch) abort
-  execute "!git checkout -b " . a:branch
+  let l:out = system("git checkout -b " . a:branch)
 
   echon "New branch created "
   echohl HiGstGreen
