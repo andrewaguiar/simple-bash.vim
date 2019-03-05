@@ -25,3 +25,7 @@ call plug#end()
   - `Gst`: performs a `git status --porcelain` and shows the result.
   - `Gco <branch>`: performs a `git checkout <branch>`.
   - `Gcb <new-branch>`: performs a `git checkout -b <new-branch>`.
+  - `Gdf`: performs a `git diff` and shows the result.
+  - `Gdfc`: performs a `git diff --cached` and shows the result.
+  - `Ga <files>`: performs a `git add <files> --verbose`.
+  - `Gaa`: performs a `git add . --verbose`.

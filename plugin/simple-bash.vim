@@ -181,3 +181,58 @@ function! s:Gcb(branch) abort
   echo " "
   echo system("git checkout -b " . a:branch)
 endfunction
+
+" Gdfc: git diff --cached
+command! -nargs=? Gdfc call s:Gdfc(<f-args>)
+
+function! s:Gdfc() abort
+  call s:performGdf("Gdfc", " --cached")
+endfunction
+
+" Gdf: git diff
+command! -nargs=? Gdf call s:Gdf(<f-args>)
+
+function! s:Gdf() abort
+  call s:performGdf("Gdf", "")
+endfunction
+
+:hi HiGdfcGreen ctermfg=green cterm=bold
+:hi HiGdfcBlue ctermfg=blue cterm=bold
+:hi HiGdfcRed ctermfg=red cterm=bold
+
+function! s:performGdf(commandName, option) abort
+  let l:out = system("git diff" . a:option)
+
+  echo a:commandName . ": git diff" . a:option
+  echo " "
+
+  for line in split(l:out, "\n")
+    if line =~ '^diff'
+      echohl HiGdfcBlue
+    elseif line =~ '^+'
+      echohl HiGstGreen
+    elseif line =~ '^-'
+      echohl HiGstRed
+    end
+    echo line
+    echohl None
+  endfor
+endfunction
+
+" Ga: git add <files>
+command! -nargs=? Ga call s:Ga(<f-args>)
+
+function! s:Ga(files) abort
+  echo "Ga: git add " . a:files . " --verbose"
+  echo " "
+  echo system("git add " . a:files . " --verbose")
+endfunction
+
+" Gaa: git add .
+command! -nargs=? Gaa call s:Gaa(<f-args>)
+
+function! s:Gaa() abort
+  echo "Gaa: git add . --verbose"
+  echo " "
+  echo system("git add . --verbose")
+endfunction
