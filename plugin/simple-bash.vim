@@ -105,3 +105,42 @@ function! s:Mkdirs(...) abort
     execute "!mkdir -p " . dir
   endfor
 endfunction
+
+" GIT
+
+" Gst: git status --porcelain
+:hi HiGstGreen ctermfg=green cterm=bold
+:hi HiGstBlue ctermfg=blue cterm=bold
+:hi HiGstRed ctermfg=red cterm=bold
+:hi HiGstYellow ctermfg=yellow cterm=bold
+
+command! -nargs=? Gst call s:Gst(<f-args>)
+
+function! s:Gst() abort
+  let l:out = system("git status --porcelain")
+
+  echo "git status --porcelain"
+  echo " "
+
+  for line in split(l:out, "\n")
+    let l:parts = split(line, " ")
+    let l:status = l:parts[0]
+    let l:file = l:parts[-1]
+
+    echo "  "
+
+    if l:status == 'M'
+      echohl HiGstGreen
+    elseif l:status == 'D'
+      echohl HiGstRed
+    elseif l:status == 'A'
+      echohl HiGstBlue
+    else
+      echohl HiGstYellow
+    end
+
+    echon l:status
+    echohl None
+    echon " " . l:file
+  endfor
+endfunction
