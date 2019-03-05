@@ -119,7 +119,7 @@ command! -nargs=? Gst call s:Gst(<f-args>)
 function! s:Gst() abort
   let l:out = system("git status --porcelain")
 
-  echo "git status --porcelain"
+  echo "Gst: git status --porcelain"
   echo " "
 
   for line in split(l:out, "\n")
