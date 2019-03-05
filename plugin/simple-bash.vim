@@ -143,4 +143,21 @@ function! s:Gst() abort
     echohl None
     echon " " . l:file
   endfor
+
+  echo " "
+  echohl HiGstGreen
+  echon "M"
+  echohl None
+  echon ": Modified, "
+  echohl HiGstBlue
+  echon "A"
+  echohl None
+  echon ": Added, "
+  echohl HiGstRed
+  echon "D"
+  echohl None
+  echon ": Deleted, "
+  echohl HiGstYellow
+  echohl None
+  echon ": Untracked"
 endfunction
