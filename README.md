@@ -29,3 +29,5 @@ call plug#end()
   - `Gdfc`: performs a `git diff --cached` and shows the result.
   - `Ga <files>`: performs a `git add <files> --verbose`.
   - `Gaa`: performs a `git add . --verbose`.
+  - `Gr <files>`: performs a `git reset <files>`.
+  - `Gra`: performs a `git reset .`.

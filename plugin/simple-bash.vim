@@ -219,6 +219,7 @@ function! s:performGdf(commandName, option) abort
   endfor
 endfunction
 
+
 " Ga: git add <files>
 command! -nargs=? Ga call s:Ga(<f-args>)
 
@@ -235,4 +236,22 @@ function! s:Gaa() abort
   echo "Gaa: git add . --verbose"
   echo " "
   echo system("git add . --verbose")
+endfunction
+
+" Gr: git reset <files>
+command! -nargs=? Gr call s:Gr(<f-args>)
+
+function! s:Gr(files) abort
+  echo "Gr: git reset " . a:files
+  echo " "
+  echo system("git reset " . a:files)
+endfunction
+
+" Gra: git reset .
+command! -nargs=? Gra call s:Gra(<f-args>)
+
+function! s:Gra() abort
+  echo "Gra: git reset ."
+  echo " "
+  echo system("git reset .")
 endfunction
