@@ -168,14 +168,7 @@ endfunction
 command! -nargs=? Gco call s:Gco(<f-args>)
 
 function! s:Gco(branch) abort
-  let l:out = system("git checkout " . a:branch)
-
-  echo l:out
-  echo " "
-  echon "Changed to branch "
-  echohl HiGstGreen
-  echon a:branch
-  echohl None
+  echo system("git checkout " . a:branch)
 endfunction
 
 " Gcb: git checkout <branch>
