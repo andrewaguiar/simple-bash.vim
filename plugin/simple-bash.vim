@@ -163,3 +163,27 @@ function! s:Gst() abort
   echohl None
   echon "-Untracked"
 endfunction
+
+" Gco: git checkout <branch>
+command! -nargs=? Gco call s:Gco(<f-args>)
+
+function! s:Gco(branch) abort
+  system("git checkout" . a:branch)
+
+  echon "Changed to branch "
+  echohl HiGstGreen
+  echon a:branch
+  echohl None
+endfunction
+
+" Gcb: git checkout <branch>
+command! -nargs=? Gcb call s:Gcb(<f-args>)
+
+function! s:Gcb(branch) abort
+  system("git checkout -b " . a:branch)
+
+  echon "New branch created "
+  echohl HiGstGreen
+  echon a:branch
+  echohl None
+endfunction

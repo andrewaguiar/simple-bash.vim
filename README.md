@@ -23,3 +23,5 @@ call plug#end()
 ### Git commands
 
   - `Gst`: performs a `git status --porcelain` and shows the result.
+  - `Gco <branch>`: performs a `git checkout <branch>`.
+  - `Gcb <new-branch>`: performs a `git checkout -b <new-branch>`.
