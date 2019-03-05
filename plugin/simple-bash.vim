@@ -145,6 +145,7 @@ function! s:Gst() abort
   endfor
 
   echo " "
+  echo " "
   echohl HiGstGreen
   echon "M"
   echohl None
