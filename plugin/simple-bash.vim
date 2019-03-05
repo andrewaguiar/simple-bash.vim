@@ -168,7 +168,7 @@ endfunction
 command! -nargs=? Gco call s:Gco(<f-args>)
 
 function! s:Gco(branch) abort
-  echo "Gco: git checkout " . branch
+  echo "Gco: git checkout " . a:branch
   echo " "
   echo system("git checkout " . a:branch)
 endfunction
@@ -177,7 +177,7 @@ endfunction
 command! -nargs=? Gcb call s:Gcb(<f-args>)
 
 function! s:Gcb(branch) abort
-  echo "Gcb: git checkout -b " . branch
+  echo "Gcb: git checkout -b " . a:branch
   echo " "
   echo system("git checkout -b " . a:branch)
 endfunction
