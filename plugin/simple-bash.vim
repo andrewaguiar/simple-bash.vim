@@ -123,46 +123,29 @@ function! s:Gst() abort
   echo "Gst: git status --porcelain"
   echo " "
 
-  for line in split(l:out, "\n")
-    let l:parts = split(line, " ")
-    let l:status = l:parts[0]
-    let l:file = l:parts[-1]
+  let l:currentPart = 'Changes to be committed'
 
-    echo "  "
-
-    if l:status == 'M'
+  for l:line in split(l:out, "\n")
+    if l:currentPart == 'Changes to be committed'
       echohl HiGstGreen
-    elseif l:status == 'D'
+    elseif if l:currentPart == 'Changes not staged for commit'
       echohl HiGstRed
-    elseif l:status == 'A'
+    elseif if l:currentPart == 'Untracked files'
       echohl HiGstBlue
-    else
-      echohl HiGstYellow
     end
 
-    echon l:status
-    echohl None
-    echon " " . l:file
+    echo l:line
+
+    if l:line == 'Changes to be committed'
+      l:currentPart = 'Change to be committed'
+    elseif if l:currentPart == 'Changes not staged for commit'
+      l:currentPart = 'Changes not staged for commit'
+    elseif if l:currentPart == 'Untracked files'
+      l:currentPart = 'Untracked files'
+    end
   endfor
 
   echo " "
-
-  echohl HiGstGreen
-  echo "M"
-  echohl None
-  echon "odified, "
-  echohl HiGstBlue
-  echon "A"
-  echohl None
-  echon "dded, "
-  echohl HiGstRed
-  echon "D"
-  echohl None
-  echon "eleted, "
-  echohl HiGstYellow
-  echon "??"
-  echohl None
-  echon "-Untracked"
 endfunction
 
 " Gbr: git branch
