@@ -138,9 +138,9 @@ function! s:Gst() abort
 
     if l:line == 'Changes to be committed:'
       let l:currentPart = 'c'
-    elseif l:currentPart == 'Changes not staged for commit:'
+    elseif l:line == 'Changes not staged for commit:'
       let l:currentPart = 'n'
-    elseif l:currentPart == 'Untracked files:'
+    elseif l:line == 'Untracked files:'
       let l:currentPart = 'u'
     end
   endfor
