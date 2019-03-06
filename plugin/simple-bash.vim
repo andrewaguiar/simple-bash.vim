@@ -134,7 +134,7 @@ function! s:Gst() abort
       let l:currentPart = 'u'
     end
 
-    if match(l:line, '        ') == 0
+    if match(l:line, "\t") == 0
       if l:currentPart == 'c'
         echohl HiGstGreen
       elseif l:currentPart == 'n'
