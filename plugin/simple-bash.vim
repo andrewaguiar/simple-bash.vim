@@ -137,11 +137,11 @@ function! s:Gst() abort
     echo l:line
 
     if l:line == 'Changes to be committed'
-      l:currentPart = 'Change to be committed'
+      let l:currentPart = 'Change to be committed'
     elseif if l:currentPart == 'Changes not staged for commit'
-      l:currentPart = 'Changes not staged for commit'
+      let l:currentPart = 'Changes not staged for commit'
     elseif if l:currentPart == 'Untracked files'
-      l:currentPart = 'Untracked files'
+      let l:currentPart = 'Untracked files'
     end
   endfor
 
