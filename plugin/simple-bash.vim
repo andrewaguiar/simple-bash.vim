@@ -234,17 +234,17 @@ function! s:performGdf(commandName, option) abort
   echo a:commandName . ": git diff" . a:option
   echo " "
 
-  for line in split(l:out, "\n")
-    if line =~ '^diff'
+  for l:line in split(l:out, "\n")
+    if l:line =~ '^diff'
       echohl HiGdfcBlue
-    elseif line =~ '^+++ ' || line =~ '^--- '
+    elseif l:line =~ '^+++ ' || l:line =~ '^--- '
       echohl HiGdfcYellow
-    elseif line =~ '^+'
+    elseif l:line =~ '^+'
       echohl HiGstGreen
-    elseif line =~ '^-'
+    elseif l:line =~ '^-'
       echohl HiGstRed
     end
-    echo line
+    echo l:line
     echohl None
   endfor
 
