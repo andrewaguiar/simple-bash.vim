@@ -118,9 +118,9 @@ endfunction
 command! -nargs=? Gst call s:Gst(<f-args>)
 
 function! s:Gst() abort
-  let l:out = system("git status --porcelain")
+  let l:out = system("git status")
 
-  echo "Gst: git status --porcelain"
+  echo "Gst: git status"
   echo " "
 
   let l:currentPart = 'Changes to be committed'
