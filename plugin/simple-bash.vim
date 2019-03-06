@@ -147,7 +147,9 @@ function! s:Gst() abort
 
       echohl None
     elseif l:line !~ "  ("
+      echo " "
       echo l:line
+      echo " "
     end
   endfor
 
