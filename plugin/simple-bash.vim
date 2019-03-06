@@ -143,25 +143,15 @@ function! s:Gst() abort
         echohl HiGstBlue
       end
 
-      echo trim(l:line)
+      echo l:line
 
       echohl None
+    elseif l:line !~ "  ("
+      echo l:line
     end
   endfor
 
   echo " "
-
-  echohl HiGstGreen
-  echo "Changes to be committed"
-  echohl None
-  echon ", "
-  echohl HiGstRed
-  echon "Changes not staged for commit"
-  echohl None
-  echon ", "
-  echohl HiGstBlue
-  echon "Untracked files"
-  echohl None
 endfunction
 
 " Gbr: git branch
