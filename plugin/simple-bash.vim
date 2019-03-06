@@ -146,7 +146,7 @@ function! s:Gst() abort
     end
 
     if l:line !~ '  (' && l:line !~ 'On branch'
-      echo l:line
+      echo trim(l:line)
     end
   endfor
 
