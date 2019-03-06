@@ -146,10 +146,10 @@ function! s:Gst() abort
       echo l:line
 
       echohl None
+    elseif l:line == ""
+      echo " "
     elseif l:line !~ "  ("
-      echo " "
       echo l:line
-      echo " "
     end
   endfor
 
