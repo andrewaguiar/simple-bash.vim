@@ -128,10 +128,13 @@ function! s:Gst() abort
   for l:line in split(l:out, "\n")
     if l:line == 'Changes to be committed:'
       let l:currentPart = 'c'
+      echo " "
     elseif l:line == 'Changes not staged for commit:'
       let l:currentPart = 'n'
+      echo " "
     elseif l:line == 'Untracked files:'
       let l:currentPart = 'u'
+      echo " "
     end
 
     if l:currentPart == 'c'
