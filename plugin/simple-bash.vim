@@ -123,6 +123,8 @@ function! s:Gst() abort
   echo "Gst: git status"
   echo " "
 
+  let l:currentPart = ''
+
   for l:line in split(l:out, "\n")
     if l:line == 'Changes to be committed:'
       let l:currentPart = 'c'
