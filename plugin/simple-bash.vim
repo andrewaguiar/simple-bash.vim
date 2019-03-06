@@ -128,9 +128,9 @@ function! s:Gst() abort
   for l:line in split(l:out, "\n")
     if l:currentPart == 'Changes to be committed'
       echohl HiGstGreen
-    elseif if l:currentPart == 'Changes not staged for commit'
+    elseif l:currentPart == 'Changes not staged for commit'
       echohl HiGstRed
-    elseif if l:currentPart == 'Untracked files'
+    elseif l:currentPart == 'Untracked files'
       echohl HiGstBlue
     end
 
@@ -138,9 +138,9 @@ function! s:Gst() abort
 
     if l:line == 'Changes to be committed'
       let l:currentPart = 'Change to be committed'
-    elseif if l:currentPart == 'Changes not staged for commit'
+    elseif l:currentPart == 'Changes not staged for commit'
       let l:currentPart = 'Changes not staged for commit'
-    elseif if l:currentPart == 'Untracked files'
+    elseif l:currentPart == 'Untracked files'
       let l:currentPart = 'Untracked files'
     end
   endfor
