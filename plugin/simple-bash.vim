@@ -134,20 +134,34 @@ function! s:Gst() abort
       let l:currentPart = 'u'
     end
 
-    if l:currentPart == 'c'
-      echohl HiGstGreen
-    elseif l:currentPart == 'n'
-      echohl HiGstRed
-    elseif l:currentPart == 'u'
-      echohl HiGstBlue
-    end
+    if match(l:line, '        ') == 0
+      if l:currentPart == 'c'
+        echohl HiGstGreen
+      elseif l:currentPart == 'n'
+        echohl HiGstRed
+      elseif l:currentPart == 'u'
+        echohl HiGstBlue
+      end
 
-    if l:line =~ '        '
       echo trim(l:line)
+
+      echohl None
     end
   endfor
 
   echo " "
+
+  echohl HiGstGreen
+  echo "Changes to be committed"
+  echohl None
+  echon ", "
+  echohl HiGstRed
+  echon "Changes not staged for commit"
+  echohl None
+  echon ", "
+  echohl HiGstBlue
+  echon "Untracked files"
+  echohl None
 endfunction
 
 " Gbr: git branch
