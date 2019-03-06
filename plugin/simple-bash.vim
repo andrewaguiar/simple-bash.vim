@@ -123,9 +123,15 @@ function! s:Gst() abort
   echo "Gst: git status"
   echo " "
 
-  let l:currentPart = 'c'
-
   for l:line in split(l:out, "\n")
+    if l:line == 'Changes to be committed:'
+      let l:currentPart = 'c'
+    elseif l:line == 'Changes not staged for commit:'
+      let l:currentPart = 'n'
+    elseif l:line == 'Untracked files:'
+      let l:currentPart = 'u'
+    end
+
     if l:currentPart == 'c'
       echohl HiGstGreen
     elseif l:currentPart == 'n'
@@ -134,14 +140,8 @@ function! s:Gst() abort
       echohl HiGstBlue
     end
 
-    echo l:line
-
-    if l:line == 'Changes to be committed:'
-      let l:currentPart = 'c'
-    elseif l:line == 'Changes not staged for commit:'
-      let l:currentPart = 'n'
-    elseif l:line == 'Untracked files:'
-      let l:currentPart = 'u'
+    if l:line !~ '  ('
+      echo l:line
     end
   endfor
 
