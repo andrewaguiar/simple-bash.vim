@@ -142,7 +142,7 @@ function! s:Gst() abort
       echohl HiGstBlue
     end
 
-    if l:line !~ '  (' && l:line != 'On branch'
+    if l:line !~ '  (' && l:line !~ 'On branch'
       echo l:line
     end
   endfor
