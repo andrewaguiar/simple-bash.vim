@@ -1,3 +1,4 @@
++
 augroup Mkdir
   autocmd!
   autocmd BufWritePre *
@@ -164,6 +165,29 @@ function! s:Gst() abort
   echon "-Untracked"
 endfunction
 
+" Gbr: git branch
+command! -nargs=? Gbr call s:Gbr(<f-args>)
+
+function! s:Gbr() abort
+  let l:out = system("git branch")
+
+  echo "Gbr: git branch"
+  echo " "
+
+  for l:line in split(l:out, "\n")
+    echo "  "
+
+    if line =~ '^* '
+      echohl HiGstGreen
+    end
+
+    echon l:line
+    echohl None
+  endfor
+
+  echo " "
+endfunction
+
 " Gco: git checkout <branch>
 command! -nargs=? Gco call s:Gco(<f-args>)
 
@@ -171,6 +195,7 @@ function! s:Gco(branch) abort
   echo "Gco: git checkout " . a:branch
   echo " "
   echo system("git checkout " . a:branch)
+  echo " "
 endfunction
 
 " Gcb: git checkout <branch>
@@ -180,6 +205,17 @@ function! s:Gcb(branch) abort
   echo "Gcb: git checkout -b " . a:branch
   echo " "
   echo system("git checkout -b " . a:branch)
+  echo " "
+endfunction
+
+" Gbd: git branch -D <branch>
+command! -nargs=? Gbd call s:Gbd(<f-args>)
+
+function! s:Gbd(branch) abort
+  echo "Gbd: git branch -D " . a:branch
+  echo " "
+  echo system("git branch -D " . a:branch)
+  echo " "
 endfunction
 
 " Gdfc: git diff --cached
@@ -199,6 +235,7 @@ endfunction
 :hi HiGdfcGreen ctermfg=green cterm=bold
 :hi HiGdfcBlue ctermfg=blue cterm=bold
 :hi HiGdfcRed ctermfg=red cterm=bold
+:hi HiGdfcYellow ctermfg=yellow cterm=bold
 
 function! s:performGdf(commandName, option) abort
   let l:out = system("git diff" . a:option)
@@ -209,6 +246,8 @@ function! s:performGdf(commandName, option) abort
   for line in split(l:out, "\n")
     if line =~ '^diff'
       echohl HiGdfcBlue
+    elseif line =~ '^+++ ' || line =~ '^--- '
+      echohl HiGdfcYellow
     elseif line =~ '^+'
       echohl HiGstGreen
     elseif line =~ '^-'
@@ -217,6 +256,8 @@ function! s:performGdf(commandName, option) abort
     echo line
     echohl None
   endfor
+
+  echo " "
 endfunction
 
 
@@ -227,6 +268,7 @@ function! s:Ga(files) abort
   echo "Ga: git add " . a:files . " --verbose"
   echo " "
   echo system("git add " . a:files . " --verbose")
+  echo " "
 endfunction
 
 " Gaa: git add .
@@ -236,6 +278,7 @@ function! s:Gaa() abort
   echo "Gaa: git add . --verbose"
   echo " "
   echo system("git add . --verbose")
+  echo " "
 endfunction
 
 " Gr: git reset <files>
