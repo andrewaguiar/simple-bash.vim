@@ -36,4 +36,6 @@ call plug#end()
   - `Gra`: performs a `git reset .`.
   - `Gcn <files>`: performs a `git clean -f <files>`.
   - `Gcna`: performs a `git clean -f .`.
-
+  - `Gpl`: performs a `git pull`.
+  - `Gft`: performs a `git fetch origin`.
+  - `Gps`: performs a `git push origin \$(git rev-parse --abbrev-ref HEAD)`.

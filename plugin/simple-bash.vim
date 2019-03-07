@@ -273,67 +273,104 @@ function! s:performGdf(commandName, option) abort
   echo " "
 endfunction
 
+function s:performSimpleGitCommand(header, command) abort
+  echo a:header . ": " . a:command
+  echo " "
+  echo system(a:command)
+  echo " "
+endfunction
+
+function s:performSimpleGitCommandWithGst(header, command) abort
+  call s:performSimpleGitCommand(a:header, a:command)
+  call s:Gst()
+endfunction
 
 " Ga: git add <files>
 command! -nargs=? Ga call s:Ga(<f-args>)
 
 function! s:Ga(files) abort
-  echo "Ga: git add " . a:files . " --verbose"
-  echo " "
-  echo system("git add " . a:files . " --verbose")
-  echo " "
+  let l:h = "Ga"
+  let l:c = "git add " . a:files . " --verbose"
+
+  call s:performSimpleGitCommand(l:h, l:c)
 endfunction
 
 " Gaa: git add .
 command! -nargs=? Gaa call s:Gaa(<f-args>)
 
 function! s:Gaa() abort
-  echo "Gaa: git add . --verbose"
-  echo " "
-  echo system("git add . --verbose")
-  echo " "
+  let l:h = "Gaa"
+  let l:c = "git add . --verbose"
+
+  call s:performSimpleGitCommand(l:h, l:c)
 endfunction
 
 " Gr: git reset <files>
 command! -nargs=? Gr call s:Gr(<f-args>)
 
 function! s:Gr(files) abort
-  echo "Gr: git reset " . a:files
-  echo " "
-  echo system("git reset " . a:files)
-  echo " "
-  call s:Gst()
+  let l:h = "Gr"
+  let l:c = "git reset " . a:files
+
+  call s:performSimpleGitCommandWithGst(l:h, l:c)
 endfunction
 
 " Gra: git reset .
 command! -nargs=? Gra call s:Gra(<f-args>)
 
 function! s:Gra() abort
-  echo "Gra: git reset ."
-  echo " "
-  echo system("git reset .")
-  echo " "
-  call s:Gst()
+  let l:h = "Gra"
+  let l:c = "git reset ."
+
+  call s:performSimpleGitCommandWithGst(l:h, l:c)
 endfunction
 
 " Gcn: git clean -f <files>
 command! -nargs=? Gcn call s:Gcn(<f-args>)
 
 function! s:Gcn(files) abort
-  echo "Gcn: git clean -f " . a:files
-  echo " "
-  echo system("git clean -f " . a:files)
-  echo " "
-  call s:Gst()
+  let l:h = "Gcn"
+  let l:c = "git clean -f " . a:files
+
+  call s:performSimpleGitCommandWithGst(l:h, l:c)
 endfunction
 
 " Gcna: git clean -f .
 command! -nargs=? Gcna call s:Gcna(<f-args>)
 
 function! s:Gcna() abort
-  echo "Gra: git clean -f ."
-  echo " "
-  echo system("git clean -f .")
-  echo " "
-  call s:Gst()
+  let l:h = "Gra"
+  let l:c = "git clean -f ."
+
+  call s:performSimpleGitCommandWithGst(l:h, l:c)
+endfunction
+
+" Gpl: git pull
+command! -nargs=? Gpl call s:Gpl()
+
+function! s:Gpl() abort
+  let l:h = "Gpl"
+  let l:c = "git pull"
+
+  call s:performSimpleGitCommand(l:h, l:c)
+endfunction
+
+" Gft: git fetch origin
+command! -nargs=? Gft call s:Gft()
+
+function! s:Gft() abort
+  let l:h = "Gft"
+  let l:c = "git fetch origin"
+
+  call s:performSimpleGitCommand(l:h, l:c)
+endfunction
+
+" Gps: git push origin \$(git rev-parse --abbrev-ref HEAD)
+command! -nargs=? Gps call s:Gps()
+
+function! s:Gps() abort
+  let l:h = "Gps"
+  let l:c = "git push origin \$(git rev-parse --abbrev-ref HEAD)"
+
+  call s:performSimpleGitCommand(l:h, l:c)
 endfunction
