@@ -39,3 +39,4 @@ call plug#end()
   - `Gpl`: performs a `git pull`.
   - `Gft`: performs a `git fetch origin`.
   - `Gps`: performs a `git push origin \$(git rev-parse --abbrev-ref HEAD)`.
+
