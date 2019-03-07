@@ -109,6 +109,28 @@ endfunction
 
 " GIT
 
+" Ghelp
+command! -nargs=? Ghelp call s:Ghelp(<f-args>)
+
+function! s:Ghelp() abort
+  echo " "
+  echo "- Ghelp: shows this list of Git commands"
+  echo "- Gbr: performs a `git branch` and shows the result."
+  echo "- Gst: performs a `git status --porcelain` and shows the result."
+  echo "- Gco <branch>: performs a `git checkout <branch>`."
+  echo "- Gcb <new-branch>: performs a `git checkout -b <new-branch>`."
+  echo "- Gbd <branch>: performs a `git branch -D <branch>`."
+  echo "- Gdf: performs a `git diff` and shows the result."
+  echo "- Gdfc: performs a `git diff --cached` and shows the result."
+  echo "- Ga <files>: performs a `git add <files> --verbose`."
+  echo "- Gaa: performs a `git add . --verbose`."
+  echo "- Gr <files>: performs a `git reset <files>`."
+  echo "- Gra: performs a `git reset .`."
+  echo "- Gcn <files>: performs a `git clean -f <files>`."
+  echo "- Gcna: performs a `git clean -f .`."
+  echo " "
+endfunction
+
 " Gst: git status --porcelain
 :hi HiGstGreen ctermfg=green cterm=bold
 :hi HiGstBlue ctermfg=blue cterm=bold
@@ -290,6 +312,28 @@ function! s:Gra() abort
   echo "Gra: git reset ."
   echo " "
   echo system("git reset .")
+  echo " "
+  call s:Gst()
+endfunction
+
+" Gcn: git clean -f <files>
+command! -nargs=? Gcn call s:Gcn(<f-args>)
+
+function! s:Gcn(files) abort
+  echo "Gcn: git clean -f " . a:files
+  echo " "
+  echo system("git clean -f " . a:files)
+  echo " "
+  call s:Gst()
+endfunction
+
+" Gcna: git clean -f .
+command! -nargs=? Gcna call s:Gcna(<f-args>)
+
+function! s:Gcna() abort
+  echo "Gra: git clean -f ."
+  echo " "
+  echo system("git clean -f .")
   echo " "
   call s:Gst()
 endfunction

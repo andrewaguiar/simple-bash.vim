@@ -22,6 +22,7 @@ call plug#end()
 
 ### Git commands
 
+  - `Ghelp`: shows this list of Git commands
   - `Gbr`: performs a `git branch` and shows the result.
   - `Gst`: performs a `git status --porcelain` and shows the result.
   - `Gco <branch>`: performs a `git checkout <branch>`.
@@ -33,3 +34,6 @@ call plug#end()
   - `Gaa`: performs a `git add . --verbose`.
   - `Gr <files>`: performs a `git reset <files>`.
   - `Gra`: performs a `git reset .`.
+  - `Gcn <files>`: performs a `git clean -f <files>`.
+  - `Gcna`: performs a `git clean -f .`.
+
