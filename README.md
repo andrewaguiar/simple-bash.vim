@@ -17,8 +17,10 @@ call plug#end()
   - `Mkdirs <varargs of new dirs>`: Creates multiple directories (directories must be separated by whitespace).
   - `Rename <newName>`: Renames current file / buffer to newName.
   - `Copy <newFile>`: Copies current file / buffer to newFile.
-  - `Move <newDir>`: Copies current file / buffer to newDir.
+  - `Move <newDir>`: Moves current file / buffer to newDir.
   - `Del`: Deletes current file / buffer.
+  - `Remove <dir/file>`: Deletes dir/file.
+  - `New <filename>`: Creates a new file in same dir of current file / buffer.
 
 ### Git commands
 

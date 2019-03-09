@@ -57,6 +57,20 @@ function! s:Rename(newFileName) abort
   execute "e " . newFile
 endfunction
 
+" New: creates a new file in same dir of current file / buffer.
+command! -nargs=* New call s:New(<f-args>)
+
+function! s:New(newFileName) abort
+  let currentDir = resolve(expand('%:p:h'))
+  let newFile = currentDir . "/" . a:newFileName
+
+  execute "!touch " . newFile
+
+  bd!
+
+  execute "e " . newFile
+endfunction
+
 " Copy: copies current file/buffer to another file
 command! -nargs=* Copy call s:Copy(<f-args>)
 
@@ -96,6 +110,13 @@ function! s:Del() abort
   execute "!rm " . currentFile
 
   bd!
+endfunction
+
+" Remove: deletes dir/file.
+command! -nargs=* Remove call s:Remove(<f-args>)
+
+function! s:Remove(dirOrFilename) abort
+  execute "!rm -fr " . a:dirOrFilename
 endfunction
 
 " Mkdirs: creates mutiples dirs
