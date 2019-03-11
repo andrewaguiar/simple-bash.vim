@@ -395,3 +395,14 @@ function! s:Gps() abort
 
   call s:performSimpleGitCommand(l:h, l:c)
 endfunction
+
+command! -nargs=+ Gci call s:Gci(<f-args>)
+
+function! s:Gci(...) abort
+  let l:message = join(a:000, ' ')
+
+  let l:h = "Gci"
+  let l:c = "git commit - \"" . l:message . "\""
+
+  call s:performSimpleGitCommand(l:h, l:c)
+endfunction
