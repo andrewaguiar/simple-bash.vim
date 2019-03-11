@@ -149,6 +149,10 @@ function! s:Ghelp() abort
   echo "- Gra: performs a `git reset .`."
   echo "- Gcn <files>: performs a `git clean -f <files>`."
   echo "- Gcna: performs a `git clean -f .`."
+  echo "- Gpl: performs a `git pull`."
+  echo "- Gft: performs a `git fetch origin`."
+  echo "- Gps: performs a `git push origin \$(git rev-parse --abbrev-ref HEAD)`."
+  echo "- Gci <message>: performs a `git commit -m \"<message>\"`."
   echo " "
 endfunction
 
