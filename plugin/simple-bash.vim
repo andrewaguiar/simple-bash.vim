@@ -301,7 +301,7 @@ function s:performSimpleGitCommand(header, command) abort
   echo " "
 endfunction
 
-function s:performSimpleGitCommandWithGst(header, command) abort
+function! s:performSimpleGitCommandWithGst(header, command) abort
   call s:performSimpleGitCommand(a:header, a:command)
   call s:Gst()
 endfunction
