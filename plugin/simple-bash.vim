@@ -294,7 +294,7 @@ function! s:performGdf(commandName, option) abort
   echo " "
 endfunction
 
-function s:performSimpleGitCommand(header, command) abort
+function! s:performSimpleGitCommand(header, command) abort
   echo a:header . ": " . a:command
   echo " "
   echo system(a:command)
@@ -402,7 +402,7 @@ function! s:Gci(...) abort
   let l:message = join(a:000, ' ')
 
   let l:h = "Gci"
-  let l:c = "git commit - \"" . l:message . "\""
+  let l:c = "git commit -m \"" . l:message . "\""
 
   call s:performSimpleGitCommand(l:h, l:c)
 endfunction
