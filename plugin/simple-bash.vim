@@ -400,6 +400,17 @@ function! s:Gps() abort
   call s:performSimpleGitCommand(l:h, l:c)
 endfunction
 
+" Gpsf: git push origin \$(git rev-parse --abbrev-ref HEAD) --force
+command! -nargs=? Gpsf call s:Gpsf()
+
+function! s:Gpsf() abort
+  let l:h = "Gpsf"
+  let l:c = "git push origin \$(git rev-parse --abbrev-ref HEAD) --force"
+
+  call s:performSimpleGitCommand(l:h, l:c)
+endfunction
+
+" Gci: git commit -m '<message>'
 command! -nargs=+ Gci call s:Gci(<f-args>)
 
 function! s:Gci(...) abort
@@ -407,6 +418,16 @@ function! s:Gci(...) abort
 
   let l:h = "Gci"
   let l:c = "git commit -m \"" . l:message . "\""
+
+  call s:performSimpleGitCommand(l:h, l:c)
+endfunction
+
+" Gcia: git commit --amend
+command! -nargs=? Gcia call s:Gcia()
+
+function! s:Gcia() abort
+  let l:h = "Gcia"
+  let l:c = "git commit --amend"
 
   call s:performSimpleGitCommand(l:h, l:c)
 endfunction
