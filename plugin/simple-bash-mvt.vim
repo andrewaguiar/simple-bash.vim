@@ -1,4 +1,8 @@
 " Mvt: executes commands located in .mvt file
+
+:hi HiMvtShowGreen ctermfg=green cterm=bold
+:hi HiMvtShowYellow ctermfg=yellow cterm=bold
+
 command! -nargs=* Mvt call s:Mvt(<f-args>)
 
 function! s:Mvt(...) abort
@@ -18,14 +22,16 @@ function! s:Mvt(...) abort
     for l:line in l:lines
       if l:line =~ ('^' . l:command . ': ')
         let l:commandValue = l:line[strlen(l:command . ': '): strlen(l:line)]
+
+        echohl HiMvtShowYellow
         echo l:commandValue
+        echohl None
+        echo " "
+        execute "!" . l:commandValue
       endif
     endfor
   endfor
 endfunction
-
-:hi HiMvtShowGreen ctermfg=green cterm=bold
-:hi HiMvtShowYellow ctermfg=yellow cterm=bold
 
 " MvtShow: shows .mvt file
 command! -nargs=? MvtShow call s:MvtShow()
