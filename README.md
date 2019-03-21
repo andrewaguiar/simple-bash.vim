@@ -14,6 +14,7 @@ call plug#end()
 
 ### Linux commands
 
+  - `Shelp`: shows this list of shell commands.
   - `Mkdirs <varargs of new dirs>`: Creates multiple directories (directories must be separated by whitespace).
   - `Rename <newName>`: Renames current file / buffer to newName.
   - `Copy <newFile>`: Copies current file / buffer to newFile.
@@ -43,7 +44,7 @@ call plug#end()
   - `Gps`: performs a `git push origin \$(git rev-parse --abbrev-ref HEAD)`.
   - `Gpsf`: performs a `git push origin \$(git rev-parse --abbrev-ref HEAD) --force`.
   - `Gci <message>`: performs a `git commit -m "<message>"`.
-  - `Gcia`: performs a `git commit --amend`.
+  - `Gcia`: performs a `git commit -C HEAD --amend`.
 
 ### My vim tools
 

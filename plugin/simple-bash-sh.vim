@@ -1,3 +1,18 @@
+" Shelp
+command! -nargs=? Shelp call s:Shelp(<f-args>)
+
+function! s:Shelp() abort
+  echo " "
+  echo "- Shelp: shows this list of shell commands."
+  echo "- Mkdirs <varargs of new dirs>`: Creates multiple directories (directories must be separated by whitespace)."
+  echo "- Rename <newName>`: Renames current file / buffer to newName."
+  echo "- Copy <newFile>`: Copies current file / buffer to newFile."
+  echo "- Move <newDir>`: Moves current file / buffer to newDir."
+  echo "- Del`: Deletes current file / buffer."
+  echo "- Remove <dir/file>`: Deletes dir/file."
+  echo "- New <filename>`: Creates a new file in same dir of current file / buffer."
+endfunction
+
 " creates dir when trying to save a buffer inside a absent dir
 augroup Mkdir
   autocmd!

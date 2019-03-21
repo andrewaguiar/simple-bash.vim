@@ -22,7 +22,7 @@ function! s:Ghelp() abort
   echo "- Gps: performs a `git push origin \$(git rev-parse --abbrev-ref HEAD)`."
   echo "- Gpsf: performs a `git push origin \$(git rev-parse --abbrev-ref HEAD) --force`."
   echo "- Gci <message>: performs a `git commit -m \"<message>\"`."
-  echo "- Gcia: performs a `git commit --ammend`."
+  echo "- Gcia: performs a `git commit -C HEAD --ammend`."
   echo " "
 endfunction
 
@@ -292,12 +292,12 @@ function! s:Gci(...) abort
   call s:performSimpleGitCommand(l:h, l:c)
 endfunction
 
-" Gcia: git commit --amend
+" Gcia: git commit -C HEAD --amend
 command! -nargs=? Gcia call s:Gcia()
 
 function! s:Gcia() abort
   let l:h = "Gcia"
-  let l:c = "git commit --amend"
+  let l:c = "git commit -C HEAD --amend"
 
   call s:performSimpleGitCommand(l:h, l:c)
 endfunction
